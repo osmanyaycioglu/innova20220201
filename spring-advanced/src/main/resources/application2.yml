@@ -1,0 +1,55 @@
+app:
+  formatter:
+    class-name: com.training.spring.MyFormatter
+    formatter-types: standart
+  lang: tr
+formatter:
+  prefix: Dear
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+    default: live
+xyz:
+  prop:
+    employe-map:
+      ali:
+        birth-date: '1970-09-11'
+        height: 200
+        name: ali
+        surname: verli
+        username: osy
+      osy:
+        birth-date: '1970-09-11'
+        height: 200
+        name: osman
+        surname: ayay
+        username: osy
+    employee:
+      birth-date: '1970-09-11'
+      height: 200
+      name: osman
+      surname: yay
+      username: osm
+    employees:
+    - name: ali
+      surname: veli
+      username: acv
+    - name: ulvi
+      surname: veli
+      username: ulv
+    name: test
+    port: 90
+    strs:
+    - str1
+    - str2
+    - str3
