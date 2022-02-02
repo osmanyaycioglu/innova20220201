@@ -9,10 +9,12 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.innova.spring.CounterBean;
 import com.lib.spring.Employee;
@@ -28,6 +30,14 @@ import com.training.spring.di.RealCounter;
 @Import(PrinterConfiguration.class)
 @EnableConfigurationProperties
 @ServletComponentScan
+@EntityScan(basePackages = {
+                             "com.training.spring",
+                             "com.innova.spring"
+})
+@EnableJpaRepositories(basePackages = {
+                                        "com.training.spring",
+                                        "com.innova.spring"
+})
 public class SpringAdvancedApplication implements ApplicationRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringAdvancedApplication.class);
