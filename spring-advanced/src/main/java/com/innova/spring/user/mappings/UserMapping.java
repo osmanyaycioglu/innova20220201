@@ -3,6 +3,7 @@ package com.innova.spring.user.mappings;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.innova.spring.user.EncryptedString;
 import com.innova.spring.user.User;
 import com.innova.spring.user.rest.models.UserRest;
 
@@ -10,7 +11,8 @@ public class UserMapping {
 
     public static UserRest mapToUserRest(final User oneUserParam) {
         UserRest user = new UserRest();
-        user.setUsername(oneUserParam.getUsername());
+        user.setUsername(oneUserParam.getUsername()
+                                     .getClearStr());
         user.setRole(oneUserParam.getRole());
         return user;
     }
@@ -25,9 +27,13 @@ public class UserMapping {
 
     public static User mapToUser(final UserRest userParam) {
         User user = new User();
-        user.setUsername(userParam.getUsername());
+        EncryptedString encs = new EncryptedString();
+        encs.setClearStr(userParam.getUsername());
+        user.setUsername(encs);
         user.setRole(userParam.getRole());
-        user.setPassword(userParam.getPassword());
+        EncryptedString encsp = new EncryptedString();
+        encsp.setClearStr(userParam.getPassword());
+        user.setPassword(encsp);
         return user;
     }
 

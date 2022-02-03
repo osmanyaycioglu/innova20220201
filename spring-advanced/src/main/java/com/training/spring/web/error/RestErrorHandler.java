@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.training.spring.security.RestSecurityException;
+
 @RestControllerAdvice
 public class RestErrorHandler {
 
@@ -23,6 +25,15 @@ public class RestErrorHandler {
         ErrorObj errorObjLoc = new ErrorObj();
         errorObjLoc.setCause(10001);
         errorObjLoc.setMessage("illegal argument : " + exp.getMessage());
+        return errorObjLoc;
+    }
+
+    @ExceptionHandler(RestSecurityException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorObj handleError(final RestSecurityException exp) {
+        ErrorObj errorObjLoc = new ErrorObj();
+        errorObjLoc.setCause(23001);
+        errorObjLoc.setMessage(exp.getMessage());
         return errorObjLoc;
     }
 

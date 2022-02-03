@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.innova.spring.user.User;
 import com.innova.spring.user.data.UserDataAccess;
 import com.innova.spring.user.properties.UserAppProps;
+import com.training.spring.aop.Logcu;
 
 @Service
 public class UserService {
@@ -19,6 +20,7 @@ public class UserService {
     @Autowired
     private UserDataAccess userDataAccess;
 
+    @Logcu("INFO")
     public void add(final User userParam) {
         this.userDataAccess.create(userParam);
     }

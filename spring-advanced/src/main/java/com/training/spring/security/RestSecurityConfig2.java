@@ -1,11 +1,10 @@
 package com.training.spring.security;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
+//@Configuration
 @Order(1)
 public class RestSecurityConfig2 extends WebSecurityConfigurerAdapter {
 
@@ -15,11 +14,11 @@ public class RestSecurityConfig2 extends WebSecurityConfigurerAdapter {
         httpParam.antMatcher("/actuator/**")
                  .authorizeRequests()
                  .antMatchers("/actuator/**")
-                 .hasAnyRole("ADMIN")
-                 .and()
-                 .formLogin()
+                 .permitAll()
                  .and()
                  .httpBasic()
+                 .and()
+                 .formLogin()
                  .disable()
                  .cors()
                  .disable()

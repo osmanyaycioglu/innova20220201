@@ -26,7 +26,8 @@ public class MyUserDetailService implements UserDetailsService {
         }
         return org.springframework.security.core.userdetails.User.builder()
                                                                  .username(usernameParam)
-                                                                 .password(this.bcpe.encode(userLoc.getPassword()))
+                                                                 .password(this.bcpe.encode(userLoc.getPassword()
+                                                                                                   .getClearStr()))
                                                                  .roles(userLoc.getRole()
                                                                                .toString())
                                                                  .build();

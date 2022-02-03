@@ -13,8 +13,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.innova.spring.CounterBean;
 import com.lib.spring.Employee;
@@ -38,6 +40,8 @@ import com.training.spring.di.RealCounter;
                                         "com.training.spring",
                                         "com.innova.spring"
 })
+@EnableScheduling
+@EnableAspectJAutoProxy
 public class SpringAdvancedApplication implements ApplicationRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringAdvancedApplication.class);
